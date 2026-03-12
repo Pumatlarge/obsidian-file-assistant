@@ -1,0 +1,334 @@
+/* Liquid Glass Obsidian File Assistant Theme */
+
+.file-assistant-sidebar-content {
+	/* Use a clear base variable if available, else we rely on panel bg */
+	background: transparent;
+	padding: 16px 12px;
+	font-family: var(--font-interface);
+	position: relative;
+	/* Extra spacing at bottom */
+	padding-bottom: 30px;
+}
+
+/* Optional: Add a subtle ambient gradient background behind the glass panels
+   only if the theme allows it, otherwise we just blur whatever is behind */
+.file-assistant-sidebar-content::before {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	pointer-events: none;
+	z-index: -1;
+	background: radial-gradient(circle at top left, color-mix(in srgb, var(--interactive-accent) 15%, transparent), transparent 40%),
+		radial-gradient(circle at bottom right, color-mix(in srgb, var(--color-purple) 15%, transparent), transparent 40%);
+}
+
+.fa-container {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	height: 100%;
+}
+
+/* Glass panel mixin class */
+.fa-glass-panel {
+	background: color-mix(in srgb, var(--background-primary) 60%, transparent);
+	backdrop-filter: blur(24px) saturate(180%);
+	-webkit-backdrop-filter: blur(24px) saturate(180%);
+	border: 1px solid color-mix(in srgb, var(--text-normal) 8%, transparent);
+	border-radius: 16px;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06),
+		inset 0 1px 1px color-mix(in srgb, var(--background-primary-alt) 20%, transparent);
+	padding: 12px;
+}
+
+.fa-header-title {
+	text-align: center;
+	margin-bottom: 2px;
+}
+
+.fa-header-title h2 {
+	margin: 0;
+	font-size: 1.15em;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	color: var(--text-normal);
+}
+
+.fa-active-file-title {
+	font-size: 0.95em;
+	font-weight: 500;
+	color: var(--text-muted);
+	text-align: center;
+	margin-bottom: 12px;
+}
+
+.fa-stats {
+	font-size: 0.8em;
+	font-weight: 600;
+	color: var(--text-faint);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	text-align: center;
+}
+
+/* Filters Area */
+.fa-filters-container {
+	padding: 12px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.fa-filters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	justify-content: center;
+}
+
+.fa-filter-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	background: color-mix(in srgb, var(--background-secondary) 50%, transparent);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+	border: 1px solid color-mix(in srgb, var(--text-normal) 6%, transparent);
+	border-radius: 20px;
+	padding: 4px 12px 4px 6px;
+	font-size: 0.85em;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+	color: var(--text-muted);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.fa-filter-btn:hover {
+	background: color-mix(in srgb, var(--background-modifier-hover) 80%, transparent);
+	transform: translateY(-1px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.fa-filter-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	background: color-mix(in srgb, var(--text-normal) 5%, transparent);
+	color: var(--text-muted);
+	transition: all 0.3s;
+}
+
+.fa-filter-icon svg {
+	width: 14px;
+	height: 14px;
+}
+
+/* specific colors based on types */
+.fa-heading {
+	--c: #007AFF;
+}
+
+.fa-bold {
+	--c: #FF3B30;
+}
+
+.fa-highlight {
+	--c: #FF9500;
+}
+
+.fa-comment {
+	--c: #AF52DE;
+}
+
+.fa-italic {
+	--c: #8E8E93;
+}
+
+.fa-code {
+	--c: #5856D6;
+}
+
+.fa-tag {
+	--c: #34C759;
+}
+
+.fa-callout {
+	--c: #FF2D55;
+}
+
+/* Filter button active states */
+.fa-filter-btn.active {
+	background: color-mix(in srgb, var(--c, var(--interactive-accent)) 15%, transparent);
+	border-color: color-mix(in srgb, var(--c, var(--interactive-accent)) 30%, transparent);
+	color: var(--c, var(--interactive-accent));
+	box-shadow: 0 4px 12px color-mix(in srgb, var(--c, var(--interactive-accent)) 15%, transparent);
+}
+
+.fa-filter-btn.active .fa-filter-icon {
+	background: var(--c, var(--interactive-accent));
+	color: white;
+	box-shadow: 0 2px 6px color-mix(in srgb, var(--c, var(--interactive-accent)) 40%, transparent);
+}
+
+/* Sub-Filters Area */
+.fa-sub-filters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	justify-content: center;
+	padding-top: 8px;
+	border-top: 1px dashed color-mix(in srgb, var(--text-muted) 20%, transparent);
+	margin-top: 4px;
+}
+
+.fa-sub-filter-btn {
+	display: inline-flex;
+	align-items: center;
+	background: transparent;
+	border: 1px solid color-mix(in srgb, var(--text-normal) 10%, transparent);
+	border-radius: 12px;
+	padding: 2px 8px;
+	font-size: 0.75em;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+	color: var(--text-muted);
+}
+
+.fa-sub-filter-btn:hover {
+	background: color-mix(in srgb, var(--background-modifier-hover) 80%, transparent);
+	color: var(--text-normal);
+}
+
+.fa-sub-filter-btn.active {
+	background: color-mix(in srgb, var(--c, var(--interactive-accent)) 15%, transparent);
+	border-color: color-mix(in srgb, var(--c, var(--interactive-accent)) 40%, transparent);
+	color: var(--c, var(--interactive-accent));
+}
+
+/* List Container */
+.fa-list-container {
+	flex: 1;
+	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 2px 4px 12px 4px;
+	/* Optional: custom scrollbar to match glass look */
+	scrollbar-width: thin;
+}
+
+/* List Item - Floating Glass Cards */
+.fa-list-item {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding: 12px;
+	background: color-mix(in srgb, var(--background-primary) 70%, transparent);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	border: 1px solid color-mix(in srgb, var(--text-normal) 5%, transparent);
+	border-radius: 12px;
+	cursor: pointer;
+	transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.fa-list-item:hover {
+	transform: scale(1.02);
+	background: color-mix(in srgb, var(--background-primary) 90%, transparent);
+	border-color: color-mix(in srgb, var(--c) 30%, transparent);
+	box-shadow: 0 6px 16px color-mix(in srgb, var(--c) 15%, transparent);
+}
+
+.fa-list-item-header {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.fa-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	padding: 4px 8px;
+	border-radius: 12px;
+	font-size: 0.75em;
+	font-weight: 600;
+	color: var(--c);
+	background: color-mix(in srgb, var(--c) 10%, transparent);
+	border: 1px solid color-mix(in srgb, var(--c) 20%, transparent);
+}
+
+.fa-badge svg {
+	width: 12px;
+	height: 12px;
+}
+
+.fa-content {
+	font-size: 0.9em;
+	line-height: 1.4;
+	color: var(--text-normal);
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	/* Adding subtle text shadow for better readability on glass */
+	text-shadow: 0 1px 1px color-mix(in srgb, var(--background-primary) 50%, transparent);
+}
+
+/* Actions Bar */
+.fa-actions {
+	display: flex;
+	gap: 12px;
+	padding-top: 10px;
+}
+
+.fa-btn {
+	flex: 1;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	padding: 10px 16px;
+	border-radius: 12px;
+	border: 1px solid color-mix(in srgb, var(--text-normal) 10%, transparent);
+	font-weight: 600;
+	font-size: 0.9em;
+	cursor: pointer;
+	transition: all 0.2s;
+	background: color-mix(in srgb, var(--background-secondary) 50%, transparent);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+	color: var(--text-normal);
+}
+
+.fa-btn svg {
+	width: 16px;
+	height: 16px;
+}
+
+.fa-btn:hover {
+	background: color-mix(in srgb, var(--background-modifier-hover) 80%, transparent);
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.fa-btn-export {
+	background: color-mix(in srgb, var(--interactive-accent) 80%, transparent);
+	color: white;
+	border-color: color-mix(in srgb, var(--interactive-accent) 100%, transparent);
+}
+
+.fa-btn-export:hover {
+	background: var(--interactive-accent);
+	box-shadow: 0 4px 16px color-mix(in srgb, var(--interactive-accent) 40%, transparent);
+}
