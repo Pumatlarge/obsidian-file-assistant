@@ -23862,6 +23862,9 @@ var SidebarView = class extends import_obsidian.ItemView {
   getViewType() {
     return VIEW_TYPE_SIDEBAR;
   }
+  getIcon() {
+    return "list-tree";
+  }
   getDisplayText() {
     return "\u6587\u6863\u52A9\u624B";
   }

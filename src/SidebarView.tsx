@@ -19,6 +19,10 @@ export class SidebarView extends ItemView {
         return VIEW_TYPE_SIDEBAR;
     }
 
+    getIcon() {
+        return "list-tree";
+    }
+
     getDisplayText() {
         return "文档助手";
     }
