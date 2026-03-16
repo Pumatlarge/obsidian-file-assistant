@@ -4,7 +4,7 @@
     "version": "1.0.0",
     "minAppVersion": "0.15.0",
     "description": "Provides a smart side panel to categorize and filter document content like headings, highlights, bold text, callouts, etc.",
-    "author": "Antigravity",
-    "authorUrl": "",
+    "author": "Feitong",
+    "authorUrl": "https://github.com/Pumatlarge",
     "isDesktopOnly": false
 }
